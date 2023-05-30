@@ -1,0 +1,99 @@
+@startuml
+'https://plantuml.com/class-diagram
+Consumer <|-- Admin
+Consumer ..> Comment
+Consumer ..> Collect
+Consumer ..> ListSong
+Consumer ..> RankList
+Consumer ..> Song
+Consumer ..> SongList
+Song "n" *-- "1" SongList
+Song "n" *-- "n" Singer
+Song "n" *-- "1" ListSong
+Song "n" *-- "1" Collect
+RankList "1" *-- "1" Song
+Comment "n" *-- "n" Song
+class Admin {
+id
+name
+password
+}
+class Collect {
+id
+userId
+type
+songId
+songListId
+createTime
+}
+class Comment {
+id
+userId
+songId
+songListId
+content
+createTime
+type
+up
+}
+class Consumer {
+id
+username
+password
+sex
+phoneNum
+email
+birth
+introduction
+location
+avator
+createTime
+updateTime
+注册()
+登录()
+评论()
+听歌()
+收藏()
+}
+class ListSong {
+id
+songId
+songListId
+}
+class RankList {
+id
+songListId
+consumerId
+score
+}
+class Singer {
+id
+name
+sex
+pic
+birth
+location
+introduction
+}
+class Song {
+id
+singerId
+name
+introduction
+createTime
+updateTime
+pic
+lyric
+url
+}
+class SongList {
+id
+title
+pic
+style
+introduction
+}
+
+
+
+@enduml

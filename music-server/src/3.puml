@@ -1,0 +1,102 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:登陆;
+if (管理员) then (true)
+    :输入账号密码;
+    :账号存在且密码正确;
+    :登陆成功;
+switch (点击)
+    case(用户管理)
+        :歌曲详情页面;
+        if (增加/删除用户) then (true)
+          :增加/删除;
+        else (false)
+            :退出;
+        endif
+    case(歌手管理)
+            :歌曲详情页面;
+            if (增加/删除歌手) then (true)
+              :增加/删除;
+            else (false)
+                :退出;
+            endif
+    case(歌单管理)
+            :歌曲详情页面;
+            if (增加/删除歌单) then (true)
+              :增加/删除;
+            else (false)
+                :退出;
+            endif
+
+    endswitch
+stop
+
+else (false)
+:输入账号密码;
+if (账号存在且密码正确) then (true)
+  :登陆成功;
+else (false)
+    :注册;
+endif
+:进入首页;
+switch (点击)
+    case(歌曲)
+        :歌曲详情页面;
+        if (播放/收藏/评分/评论歌曲) then (true)
+          :播放/收藏/评分/评论;
+        else (false)
+            :退出;
+        endif
+    case(歌单)
+        :歌单详情页面;
+        if (播放/收藏歌单) then (true)
+          :播放/收藏;
+        else (false)
+            :退出;
+        endif
+    case(歌手)
+        :歌手详情页面;
+        if (播放/收藏歌手的歌曲) then (true)
+          :播放/收藏;
+        else (false)
+            :退出;
+        endif
+    case(个人主页)
+        :个人信息页面;
+        if (修改信息) then (true)
+          :修改;
+        else (false)
+            :退出;
+        endif
+    endswitch
+
+
+stop
+
+'if (continue processing?) then (no)
+'  stop
+'endif
+'
+'if (isPost?) then (yes)
+'  :Page.onPost();
+'else (no)
+'  :Page.onGet();
+'endif
+':Page.onRender();
+'endif
+'
+'
+'if (do redirect?) then (yes)
+'  :redirect process;
+'else
+'  if (do forward?) then (yes)
+'    :Forward request;
+'  else (no)
+'    :Render page template;
+'  endif
+'endif
+'
+'stop
+@enduml
